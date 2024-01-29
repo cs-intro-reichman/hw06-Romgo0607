@@ -70,16 +70,10 @@ public class Runigram {
 		in.readInt();
 		// Creates the image array
 		Color[][] image = new Color[numRows][numCols];
-		int i = 0 ;
-		while (!in.isEmpty()){
-			in.readLine();
-			for(int j = 0 ; j < numCols ; j++){
-				int red = in.readInt();
-				int green = in.readInt();
-				int blue = in.readInt();
-				image [i][j] = new Color(red,green,blue);
+		for(int i = 0; i < image.length; i++) {
+			for(int j = 0; j < image[0].length; j++) {
+					image[i][j] = new Color(in.readInt(),in.readInt(), in.readInt());
 			}
-			i++;
 		}
 		return image;
 	}
@@ -180,9 +174,9 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		int red = (int)(alpha * c1.getRed()) + (int)((1 - alpha) * c2.getRed());
-		int green = (int)(alpha * c1.getGreen()) + (int)((1 - alpha) * c2.getGreen());
-		int blue = (int)(alpha * c1.getBlue()) + (int)((1 - alpha) * c2.getBlue());
+		int red = (int)(alpha * c1.getRed() + (1 - alpha) * c2.getRed());
+		int green = (int)(alpha * c1.getGreen() + (1 - alpha) * c2.getGreen());
+		int blue = (int)(alpha * c1.getBlue() + (1 - alpha) * c2.getBlue());
 
 		Color newColor = new Color(red, green, blue);
 
